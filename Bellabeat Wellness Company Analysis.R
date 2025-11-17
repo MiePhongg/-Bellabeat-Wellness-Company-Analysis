@@ -103,13 +103,12 @@ activity_by_day <- daily_activity %>%
     mean_steps = mean(TotalSteps, na.rm = TRUE),
     mean_calories = mean(Calories, na.rm = TRUE),
     mean_sedentary = mean(SedentaryMinutes, na.rm = TRUE))
-
-#Kết hợp dữ liệu hoạt động và giấc ngủ
 ggplot(activity_by_day, aes(x = day_of_week, y = mean_calories, fill = day_of_week)) +
   geom_col() +
   labs(title = "Trung bình lượng calo đốt cháy theo ngày trong tuần",
        x = "Ngày trong tuần", y = "Calo trung bình")
 
+#Kết hợp dữ liệu hoạt động và giấc ngủ
 combined_data <- merge(sleep_day, daily_activity, by = "Id")
 
 ggplot(combined_data, aes(x = TotalMinutesAsleep, y = TotalSteps)) +
